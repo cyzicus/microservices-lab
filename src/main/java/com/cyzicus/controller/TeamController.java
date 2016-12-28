@@ -1,6 +1,8 @@
 package com.cyzicus.controller;
 
-import com.cyzicus.model.Team;
+import com.cyzicus.data.TeamRepository;
+import com.cyzicus.model.TeamEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,14 +12,16 @@ import java.util.List;
 @RestController
 public class TeamController {
 
+    private final TeamRepository teamRepository;
+
+    @Autowired
+    public TeamController(TeamRepository teamRepository) {
+        this.teamRepository = teamRepository;
+    }
+
     @GetMapping(value = "/teams")
-    public List<Team> getTeams() {
+    public Iterable<TeamEntity> getTeams() {
 
-        List<Team> teams = Arrays.asList(
-                new Team(0l, "Globetrotters", "Harlem", "Globetrotters"),
-                new Team(1l, "Generals", "Washington", "Generals")
-
-        );
-        return teams;
+        return teamRepository.findAll();
     }
 }
