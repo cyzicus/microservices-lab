@@ -4,6 +4,7 @@ import com.cyzicus.data.TeamRepository;
 import com.cyzicus.model.TeamEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
@@ -23,5 +24,10 @@ public class TeamController {
     public Iterable<TeamEntity> getTeams() {
 
         return teamRepository.findAll();
+    }
+
+    @GetMapping(value = "/teams/{id}")
+    public TeamEntity getTeam(@PathVariable(value = "id") Long id) {
+        return teamRepository.findOne(id);
     }
 }
