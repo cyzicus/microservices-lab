@@ -12,6 +12,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @SpringBootApplication
 public class MicroservicesLabApplication {
@@ -33,26 +35,16 @@ public class MicroservicesLabApplication {
 		PlayerEntity scooby = PlayerEntity.builder().name("Scooby").position("Mascot").build();
 		PlayerEntity scrappy = PlayerEntity.builder().name("Scrappy").position("Mascot").build();
 
-		Set<PlayerEntity> globetrotters = new HashSet<>();
-		globetrotters.add(fred);
-		globetrotters.add(daphne);
-		globetrotters.add(scrappy);
-
-		Set<PlayerEntity> generals = new HashSet<>();
-		generals.add(shaggy);
-		generals.add(velma);
-		generals.add(scooby);
-
 		List<TeamEntity> teamEntities = Arrays.asList(
 				TeamEntity.builder()
 						.name("Globetrotters")
 						.location("Harlem")
-						.players(globetrotters)
+						.players(Stream.of(fred, daphne, scrappy).collect(Collectors.toSet()))
 						.build(),
 				TeamEntity.builder()
 						.name("Generals")
 						.location("Washington")
-						.players(generals)
+						.players(Stream.of(shaggy, velma, scooby).collect(Collectors.toSet()))
 						.build()
 		);
 
