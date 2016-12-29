@@ -1,8 +1,7 @@
-package com.cyzicus.data;
+package com.cyzicus.data.repo;
 
-import com.cyzicus.model.TeamEntity;
+import com.cyzicus.data.entity.TeamEntity;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 @Repository

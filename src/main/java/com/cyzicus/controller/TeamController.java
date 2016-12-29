@@ -1,14 +1,11 @@
 package com.cyzicus.controller;
 
-import com.cyzicus.data.TeamRepository;
-import com.cyzicus.model.TeamEntity;
+import com.cyzicus.data.repo.TeamRepository;
+import com.cyzicus.data.entity.TeamEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Arrays;
-import java.util.List;
 
 @RestController
 public class TeamController {
